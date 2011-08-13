@@ -1,0 +1,24 @@
+<head>
+	<script src="reload.js"></script>
+	<script>
+		Reload.lib_location = "lib";
+		Reload.libs = [ 'jquery-1.6.2.min', 'underscore-min','backbone-min', 'ich-min' ];
+		Reload.load( function () {
+			$('#jquery_test').html('Success!');
+			var array = [1, 2, 3, 4];
+			$("#ul_test").html("");
+			_(array).each(function (a) { 
+				$('#ul_test').append("success!" + a);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="jquery_test">
+		FaiL?
+	</div>
+	
+	<div id="ul_test">
+		FaiL?
+	</div>
+</body>
