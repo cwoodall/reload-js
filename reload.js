@@ -4,6 +4,16 @@
 //     For all details and documentation:
 //     http://github.com/cwoodall/reload-js
 
+// Reload tries to stay out of your way, besides adding a block. It is a loader, not a 
+// versioning system or repository. You are the one responsible for versioning
+// and setting up your file system. The more work that is already done the
+// faster Reload can work, as such I only included a few features for efficiency.
+//
+// As a general rule of thumb you will want to structure your library directory in 
+// a logical and well defined manner. Most plugins do not follow the same standards,
+// as such I don't rely on them. It is up to the maintainer to setup standards.
+//
+// Support for versioning might be included in a future version of Reload.js
 (function () {
 	// # Baseline Setup
 
@@ -34,26 +44,18 @@
 			if (this.lib_location !== "" && !((/http:\/\/.*/i).test(lib))) {
 				// If there is no .js we will add it for you... Because we are nice.
 				// 
-				// Allows function calls that look like this:  
-				//     Reload.require('jquery.min', function () {
-				//         $('body').append('Test Success');
-				//     });
+				// Allows function calls that look like this:
+                //  
+				//      Reload.require('jquery.min', function () {
+				//          $('body').append('Test Success');
+				//      });
 				//
 				// Or with intelligent folder and file naming:  
-				//     Reload.requires(['jquery', 'jquery/some_plugin'], function () {
-				//         $('body').append('Test Success');
-				//     })
+                //
+				//      Reload.requires(['jquery', 'jquery/some_plugin'], function () {
+				//          $('body').append('Test Success');
+				//      });
 				//
-				// Reload tries to do as little as possible for you. It is a loader, not a 
-				// versioning system or repository. You are the one responsible for versioning
-				// and setting up your file system. The more work that is already done the
-				// faster Reload can work, as such I only included a few features for efficiency.
-				//
-				// As a general rule of thumb you will want to structure your library directory in 
-				// a logical and well defined manner. Most plugins do not follow the same standards,
-				// as such I don't rely on them. It is up to the maintainer to setup standards.
-				//
-				// Support for versioning might be included in a future version of Reload.js
 				if (!((/.+\.js$/i).test(lib))) {
 					lib += ".js";
 				}
