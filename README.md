@@ -20,6 +20,8 @@ Support for versioning might be included in a future version of Reload.js
 
 # Uses
 
+See "example/index.html" for now.
+
 # Building Reload.js
 
 Currently I have a Rakefile which will help with building the minified version
