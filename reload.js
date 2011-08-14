@@ -14,7 +14,7 @@
 // as such I don't rely on them. It is up to the maintainer to setup standards.
 //
 // Support for versioning might be included in a future version of Reload.js
-(function () {
+(function (window, document, undefined) {
 	// # Baseline Setup
 
 	// Define the head to speed up future queries for the head object.
@@ -24,7 +24,7 @@
 	
 	// Define base Reload object, everything will be added to this.
 	Reload = new function () {
-		this.VERSION = "0.1b";
+		this.VERSION = "0.1";
 		
 		// OPTIONAL: Defines where your library folder is. Leave blank if none is desired.
 		// If a library starts with http:// the lib_location will NOT be applied.
@@ -78,8 +78,9 @@
 		// Require multiple libraries using and array
 		this.requires = function(lib_array, callback) {
 			// Why would there be 0 or fewer libraries? You are crazy
+			// We will just call the callback...
 			if (lib_array.length <= 0) {
-				throw "Insufficient Arguments, No Libraries Required";
+				window.onload = callback;
 			} else if (lib_array.length === 1) {
 				// When there is one library left we just call require and call the callback
 				this.require(lib_array[0], callback);
@@ -101,4 +102,4 @@
 			this.requires(this.libs, callback);
 		};
 	};
-})();
+})(window, document);
